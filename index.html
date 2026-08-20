@@ -9,8 +9,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
-            background-attachment: fixed;
+            /* Cielo nocturno muy oscuro */
+            background: #05070a;
             font-family: 'Poppins', sans-serif;
             color: #ffffff;
             min-height: 100vh;
@@ -22,148 +22,107 @@
             position: relative;
         }
 
-        /* Estrellas de fondo */
-        body::before {
-            content: "";
+        /* Lluvia de estrellas doradas */
+        .stars-rain {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 90px 150px, #ffffff, rgba(0,0,0,0));
-            background-size: 350px 350px;
-            opacity: 0.6;
-            z-index: -2;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .star-gold {
+            position: absolute;
+            background: gold;
+            width: 2px; height: 2px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px gold;
+            animation: rain linear infinite;
+        }
+        @keyframes rain {
+            from { transform: translateY(-10px); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
         }
 
-        .shooting-star {
-            position: absolute; width: 120px; height: 2px;
-            background: linear-gradient(90deg, #fff, transparent);
-            top: 15%; left: -120px; transform: rotate(-35deg);
-            animation: shoot 6s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes shoot {
-            0% { transform: translateX(0) rotate(-35deg); opacity: 1; }
-            40% { transform: translateX(110vw) rotate(-35deg); opacity: 0; }
-            100% { transform: translateX(110vw) rotate(-35deg); opacity: 0; }
-        }
-
-        /* CONTENEDOR TRANSPARENTE */
+        /* La tarjeta con fondo azul bonito */
         .container {
-            background: rgba(255, 255, 255, 0.03); /* Casi invisible */
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(160deg, rgba(10, 25, 47, 0.9) 0%, rgba(2, 12, 27, 0.95) 100%);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            backdrop-filter: blur(15px);
             max-width: 600px;
             width: 100%;
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 40px;
+            border-radius: 30px;
             text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             z-index: 1;
+            position: relative;
         }
 
         .photo-frame-wrapper {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 200px; height: 200px;
             margin: 0 auto 30px auto;
-            border-radius: 15px;
-            padding: 4px;
+            border-radius: 20px;
+            padding: 3px;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-
         .photo-frame-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, #ff007f);
-            animation: rotateNeon 4s linear infinite;
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, #ff007f, transparent, #ff007f);
+            animation: rotate 3s linear infinite;
         }
-
-        @keyframes rotateNeon {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
         .photo-inner {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border-radius: 13px;
-            overflow: hidden;
+            position: relative; z-index: 1; width: 100%; height: 100%;
+            background: #0a192f; border-radius: 17px; overflow: hidden;
         }
+        .photo-inner img { width: 100%; height: 100%; object-fit: cover; }
 
-        .photo-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 13px;
-        }
-
-        h1 { font-size: 2rem; margin-bottom: 15px; color: #ffffff; }
-        h2 { font-size: 1.4rem; margin-top: 35px; color: #00d4ff; }
-        .message { font-size: 1.05rem; line-height: 1.8; color: #e0f7fa; margin-bottom: 25px; }
-
-        .button-group { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: #64ffda; }
+        .message { font-size: 1rem; color: #8892b0; line-height: 1.7; margin-bottom: 30px; }
+        
         .love-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: 2px solid #ff007f;
-            padding: 12px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
+            background: transparent; color: #64ffda; border: 1px solid #64ffda;
+            padding: 10px 20px; border-radius: 8px; margin: 5px; cursor: pointer; transition: 0.3s;
         }
-        .love-btn:hover { background: #ff007f; }
+        .love-btn:hover { background: rgba(100, 255, 218, 0.1); }
 
-        .display-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-            color: #ffffff;
-        }
-        .signature { font-size: 1.2rem; font-weight: 600; color: #ff4081; margin-top: 30px; }
+        .signature { margin-top: 30px; font-weight: 600; color: #ff007f; }
     </style>
 </head>
 <body>
 
-    <div class="shooting-star"></div>
+    <div class="stars-rain" id="stars-container"></div>
 
     <div class="container">
         <div class="photo-frame-wrapper">
-            <div class="photo-inner">
-                <img src="nosotros.jpg" alt="Mi amor">
-            </div>
+            <div class="photo-inner"><img src="nosotros.jpg" alt="Amor"></div>
         </div>
 
         <h1>Nuestra Serendipia</h1>
         <p class="message">
-            Dicen que la serendipia es encontrar algo hermoso sin buscarlo, y tropezarme contigo ha sido el hallazgo más grande de mi vida. 
-            Así como el azul inmenso del cielo y del mar se funden en el horizonte, mi mundo entero se ilumina desde que estás en él.
+            El azul más profundo es el que guardo para ti, y estas estrellas doradas son solo un pequeño reflejo de todo lo que iluminas mi vida.
         </p>
 
-        <h2>Las Cosas Que Te Gustan</h2>
-        <div class="button-group">
-            <button class="love-btn" onclick="location.href='flores.html'">🌸 Flores Favoritas</button>
-            <button class="love-btn" onclick="location.href='arboles.html'">🌲 Árboles Favoritos</button>
-        </div>
-
-        <div id="info-card" class="display-card">
-            Toca uno de los botones de arriba. ✨
+        <div>
+            <button class="love-btn" onclick="location.href='flores.html'">🌸 Flores</button>
+            <button class="love-btn" onclick="location.href='arboles.html'">🌲 Árboles</button>
         </div>
 
         <div class="signature">Te amo con toda el alma ✨</div>
     </div>
+
+    <script>
+        // Generar lluvia de estrellas doradas
+        const container = document.getElementById('stars-container');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star-gold';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(star);
+        }
+    </script>
 </body>
 </html>
