@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árboles Favoritos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-container { text-align: center; max-width: 700px; margin-bottom: 40px; }
+        h1 { font-size: 2.2rem; color: #e0f7fa; margin-bottom: 15px; }
+        .subtitle { font-size: 1.05rem; color: #b3e5fc; font-weight: 300; }
+
+        .tree-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .tree-card {
+            background: rgba(2, 0, 36, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .tree-img-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            padding: 4px;
+            margin: 0 auto 20px auto;
+            overflow: hidden;
+        }
+
+        /* Colores Neón personalizados por árbol */
+        .jacaranda::before { background: conic-gradient(transparent, transparent, transparent, #8338ec); }
+        .cerezo::before { background: conic-gradient(transparent, transparent, transparent, #ff99ac); }
+        .arce::before { background: conic-gradient(transparent, transparent, transparent, #e63946); }
+        .ciruelo::before { background: conic-gradient(transparent, transparent, transparent, #6a040f); }
+
+        .tree-img-wrapper::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            animation: rotateGlow 4s linear infinite;
+        }
+
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .tree-inner {
+            position: relative; z-index: 1; width: 100%; height: 100%;
+            background: #020024; border-radius: 13px; overflow: hidden;
+        }
+        .tree-inner img { width: 100%; height: 100%; object-fit: cover; }
+
+        h3 { font-size: 1.3rem; color: #e0f7fa; margin-bottom: 10px; }
+        .tree-desc { font-size: 0.95rem; color: #b3e5fc; line-height: 1.6; }
+
+        .back-btn {
+            background: transparent; color: #ffffff; border: 2px solid #ff007f;
+            padding: 12px 30px; border-radius: 30px; font-weight: 600;
+            text-decoration: none; margin-top: 40px; transition: 0.3s;
+        }
+        .back-btn:hover { background: #ff007f; box-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>Árboles Favoritos</h1>
+        <p class="subtitle">La fuerza de las raíces y la belleza de sus hojas son como nuestro amor: constante, hermoso y siempre creciendo.</p>
+    </div>
+
+    <div class="tree-grid">
+        <!-- 1. Jacaranda -->
+        <div class="tree-card">
+            <div class="tree-img-wrapper jacaranda">
+                <div class="tree-inner"><img src="https://files.yuki-wabot.my.id/cdn/mx5KymaC.jpeg" alt="Jacaranda"></div>
+            </div>
+            <h3>Jacaranda</h3>
+            <p class="tree-desc">Sus flores violetas cubren el suelo como un manto mágico, simbolizando la sabiduría y el regalo de la primavera.</p>
+        </div>
+
+        <!-- 2. Cerezo -->
+        <div class="tree-card">
+            <div class="tree-img-wrapper cerezo">
+                <div class="tree-inner"><img src="https://files.yuki-wabot.my.id/cdn/bVsTjias.jpeg" alt="Cerezo"></div>
+            </div>
+            <h3>Cerezo</h3>
+            <p class="tree-desc">La belleza efímera y delicada de sus flores nos recuerda apreciar cada momento que compartimos juntos.</p>
+        </div>
+
+        <!-- 3. Arce japonés -->
+        <div class="tree-card">
+            <div class="tree-img-wrapper arce">
+                <div class="tree-inner"><img src="https://files.yuki-wabot.my.id/cdn/wMw8ZVMw.jpeg" alt="Arce japonés"></div>
+            </div>
+            <h3>Arce Japonés</h3>
+            <p class="tree-desc">Sus hojas palmeadas y tonos intensos son una obra de arte natural, y se vera perfecto uno en nuestro patio para tus decoraciones.</p>
+        </div>
+
+        <!-- 4. Ciruelo rojo -->
+        <div class="tree-card">
+            <div class="tree-img-wrapper ciruelo">
+                <div class="tree-inner"><img src="https://files.yuki-wabot.my.id/cdn/4U5Obsq8.jpeg" alt="Ciruelo rojo"></div>
+            </div>
+            <h3>Ciruelo Rojo</h3>
+            <p class="tree-desc">Un árbol con una presencia profunda y elegante, cuyas hojas oscuras destacan con una belleza única y cautivadora.</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-btn">← Volver al inicio</a>
+
+</body>
+</html>
