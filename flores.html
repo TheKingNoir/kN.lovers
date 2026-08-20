@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Flores Que Te Gustan</title>
+    <!-- Fuente elegante de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Degradado con los tonos de azul favoritos */
+            background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-container {
+            text-align: center;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #e0f7fa;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: #b3e5fc;
+            font-weight: 300;
+        }
+
+        /* Contenedor de las tarjetas en cuadrícula */
+        .flowers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        /* Tarjeta individual */
+        .flower-card {
+            background: rgba(2, 0, 36, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Marco individual para la imagen de cada flor con su color específico */
+        .flower-img-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            padding: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Efectos de brillo personalizados según el color de la flor */
+        .loto-azul::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #00b4d8); animation: rotateGlow 4s linear infinite; }
+        .cempasuchil::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #ff9f1c); animation: rotateGlow 4s linear infinite; }
+        .agapanto::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #7b2cbf); animation: rotateGlow 4s linear infinite; }
+        .jazmin-azul::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #0077b6); animation: rotateGlow 4s linear infinite; }
+        .hortensia::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #48cae4); animation: rotateGlow 4s linear infinite; }
+        .azalea::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #ff4d6d); animation: rotateGlow 4s linear infinite; }
+        .aguilena::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, #90e0ef); animation: rotateGlow 4s linear infinite; }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .flower-inner {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: #020024;
+            border-radius: 13px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flower-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 13px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #e0f7fa;
+            margin-bottom: 10px;
+        }
+
+        .flower-desc {
+            font-size: 0.95rem;
+            color: #b3e5fc;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Botón para regresar al inicio */
+        .back-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #ff007f;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background: #ff007f;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.8);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .header-container { padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>Las Flores Que Te Gustan</h1>
+        <p class="subtitle">Un recorrido por aquellas bellezas de la naturaleza que reflejan tus gustos y la hermosa esencia que hay en ti.</p>
+    </div>
+
+    <div class="flowers-grid">
+
+        <!-- 1. Loto azul -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper loto-azul">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_LOTO_AZUL" alt="Loto azul">
+                </div>
+            </div>
+            <h3>Loto Azul</h3>
+            <p class="flower-desc">Símbolo de tranquilidad, elevación espiritual y pureza. Sus aguas tranquilas resguardan una magia inigualable.</p>
+        </div>
+
+        <!-- 2. Cempasúchitl -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper cempasuchil">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_CEMPASUCHITL" alt="Cempasúchitl">
+                </div>
+            </div>
+            <h3>Cempasúchitl</h3>
+            <p class="flower-desc">Vibrante y llena de vida, con un calor que ilumina cualquier espacio y evoca tradiciones llenas de alma.</p>
+        </div>
+
+        <!-- 3. Agapanto -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper agapanto">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_AGAPANTO" alt="Agapanto">
+                </div>
+            </div>
+            <h3>Agapanto</h3>
+            <p class="flower-desc">Conocida como la flor del amor, sus tonos azulados y violáceos transmiten afecto sincero y profunda devoción.</p>
+        </div>
+
+        <!-- 4. Jazmín azul -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper jazmin-azul">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_JAZMIN_AZUL" alt="Jazmín azul">
+                </div>
+            </div>
+            <h3>Jazmín Azul</h3>
+            <p class="flower-desc">Delicado y elegante, aporta una frescura única que embellece los días con su gracia natural.</p>
+        </div>
+
+        <!-- 5. Hortensia azul -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper hortensia">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_HORTENSIA" alt="Hortensia azul">
+                </div>
+            </div>
+            <h3>Hortensia Azul</h3>
+            <p class="flower-desc">Representa la gratitud profunda y la abundancia de sentimientos honestos convertidos en pétalos.</p>
+        </div>
+
+        <!-- 6. Azalea -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper azalea">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_AZALEA" alt="Azalea">
+                </div>
+            </div>
+            <h3>Azalea</h3>
+            <p class="flower-desc">Una flor cautivadora que expresa amor por la familia, cuidado y una belleza que resplandece.</p>
+        </div>
+
+        <!-- 7. Aguileña azul -->
+        <div class="flower-card">
+            <div class="flower-img-wrapper aguilena">
+                <div class="flower-inner">
+                    <img src="LINK_IMAGEN_AGUILENA" alt="Aguileña azul">
+                </div>
+            </div>
+            <h3>Aguileña Azul</h3>
+            <p class="flower-desc">Única en su forma, misteriosa y ligera, portadora de un encanto sutil y soñador.</p>
+        </div>
+
+    </div>
+
+    <!-- Botón para volver al inicio -->
+    <a href="index.html" class="back-btn">← Volver al inicio</a>
+
+</body>
+</html>
